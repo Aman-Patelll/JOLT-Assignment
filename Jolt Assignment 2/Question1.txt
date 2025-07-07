@@ -1,0 +1,47 @@
+
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "*": {
+        "brand": "=substring(@(1,productStoreId),0,2)",
+        "subdate": "=substring(@(1,orderDate),0,10)",
+        "splitDate": "=split('-',@(1,subdate))",
+        "year": "=join('',@(1,splitDate[0]),@(1,splitDate[1]),@(1,splitDate[2]))",
+        "CustomerName": "=join(' ',@(1,customerFirstName),@(1,customerLastName))"
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "orderItems": {
+          "*": {
+            "goodIdentifications": {
+              "*": {
+                "goodIdentificationTypeId": {
+                  "SKU": {
+                    "@(2,idValue)": "[#8].item&5.style"
+                  },
+                  "UPCA": {
+                    "@(2,idValue)": "[#8].item&5.UPCA"
+                  }
+                }
+              }
+            },
+            "@(2,brand)": "[#4].item&1.Brand",
+            "@(2,orderName)": "[#4].item&1.Customer PO Number",
+            "@(2,year)": "[#4].item&1.orderDate",
+            "@(2,CustomerName)": "[#4].item&1.Customer Name",
+            "@(2,currency)": "[#4].item&1.currency",
+            "unitPrice": ["[#4].item&1.order price", "[#4].item&1.price"],
+            "quantity": "[#4].item&1.Quantity"
+          }
+        }
+      }
+    }
+    }
+
+
+]
