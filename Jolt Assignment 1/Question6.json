@@ -1,0 +1,32 @@
+[
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "users": {
+          "*": {
+            "address": {
+              "Address": "=join(', ', @(1,street), @(1,city), @(1,state))"
+            }
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "users": {
+          "*": {
+            "name": "[#2].Name",
+            "address": {
+              "Address": "[#3].Address"
+            },
+            "hobbies": {
+              "*": {
+                "name": "[#4].Hobbies"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]

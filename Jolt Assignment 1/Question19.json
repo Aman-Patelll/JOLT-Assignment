@@ -1,0 +1,32 @@
+[
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "products": {
+          "*": {
+            "doublePrice": "=divideAndRound(2, @(1,price), 0.5)"
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "products": {
+          "*": {
+            "id": {
+              "1002": {
+                "@(2,doublePrice)": "products[#4].price"
+              },
+              "1003": {
+                "@(2,doublePrice)": "products[#4].price"
+              },
+              "*": {
+                "@(2,price)": "products[#4].price"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]

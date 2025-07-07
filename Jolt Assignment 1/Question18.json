@@ -1,0 +1,12 @@
+[
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "employees": {
+          "*": {
+            "salary": "=divideAndRound(0, @(1,salary), 0.9090909)"
+          }
+        }
+      }
+    }
+  ]

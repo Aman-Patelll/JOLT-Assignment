@@ -1,0 +1,25 @@
+[
+    {
+      "operation": "modify-overwrite-beta",
+      "spec": {
+        "employee": {
+          "name": "=join(' ', @(1,firstName), @(1,lastName))",
+          "address": {
+            "address": "=join(', ', @(1,street), @(1,city), @(1,state), @(1,zip))"
+          }
+        }
+      }
+    },
+    {
+      "operation": "shift",
+      "spec": {
+        "employee": {
+          "name": "&",
+          "address": {
+            "address": "&"
+          },
+          "phones": "phoneNumbers"
+        }
+      }
+    }
+  ]
